@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.Color;
 
+// Audio
+import java.applet.AudioClip;
+
 public class DPlay extends javax.swing.JDialog {
 
     public DPlay(java.awt.Frame parent, boolean modal) {
@@ -38,6 +41,14 @@ public class DPlay extends javax.swing.JDialog {
     Respuesta rt3;
     Respuesta rt4;
     
+    boolean using_help1=false;    
+    boolean using_help2=false;
+    boolean using_help3=false;
+
+    
+    
+            // TODO add your handling code here:
+
     Color color_violeta = new java.awt.Color(120, 0, 120);
     
     public void setPreguntas(List<Pregunta> preguntas) 
@@ -62,12 +73,17 @@ public class DPlay extends javax.swing.JDialog {
         BttEnviar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         LblCont = new javax.swing.JLabel();
+        btnHelp_1 = new javax.swing.JToggleButton();
+        btnHelp_3 = new javax.swing.JToggleButton();
+        btnHelp_2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 0, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.yellow);
         setIconImage(null);
         setIconImages(null);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
 
         LblFaq.setBackground(new java.awt.Color(51, 0, 102));
@@ -136,49 +152,86 @@ public class DPlay extends javax.swing.JDialog {
         LblCont.setForeground(new java.awt.Color(204, 0, 51));
         LblCont.setText("0");
 
+        btnHelp_1.setText("btnHelp_1");
+        btnHelp_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelp_1ActionPerformed(evt);
+            }
+        });
+
+        btnHelp_3.setText("btnHelp_3");
+        btnHelp_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelp_3ActionPerformed(evt);
+            }
+        });
+
+        btnHelp_2.setText("btnHelp_2");
+        btnHelp_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelp_2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(BttEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 1259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRt1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRt3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRt4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRt2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(30, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LblFaq, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LblCont, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(BttEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblRt1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                                    .addComponent(lblRt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(81, 81, 81)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblRt2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                                    .addComponent(lblRt4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(LblFaq, javax.swing.GroupLayout.PREFERRED_SIZE, 1217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 135, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(585, 585, 585)
+                .addComponent(btnHelp_1)
+                .addGap(18, 18, 18)
+                .addComponent(btnHelp_2)
+                .addGap(18, 18, 18)
+                .addComponent(btnHelp_3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LblCont, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LblFaq, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnHelp_2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHelp_3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHelp_1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(LblCont))
-                .addGap(34, 34, 34)
+                .addGap(68, 68, 68)
+                .addComponent(LblFaq, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRt1)
                     .addComponent(lblRt2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRt4)
                     .addComponent(lblRt3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BttEnviar)
                     .addComponent(jButton1))
@@ -229,7 +282,7 @@ public class DPlay extends javax.swing.JDialog {
     }//GEN-LAST:event_lblRt3MouseClicked
 
     private void lblRt4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRt4MouseClicked
-      rtc=rt4;
+      rtc=rt4;        // TODO add your handling code here:
       
       lblRt4.setForeground(new java.awt.Color(255, 153, 0));
       lblRt4.setBackground(color_violeta);
@@ -285,6 +338,70 @@ public class DPlay extends javax.swing.JDialog {
         
     }//GEN-LAST:event_BttEnviarActionPerformed
 
+    private void btnHelp_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelp_1ActionPerformed
+        
+        if(!using_help1){
+        
+            // DEBO BORRAR DOS PREGUNTAS INCORRECTAS
+            int aleatorio, next_aleatorio;
+            int i = 0;
+            JLabel[] respuestas_activas = {lblRt1, lblRt2, lblRt3, lblRt4 };
+            JLabel respuesta_seleccionada;
+            String respuesta_correcta = pr.getRespuestas().get(0).getTex();
+            JLabel[] respuestas_falsas = new JLabel[3];
+            for (JLabel respuesta : respuestas_activas ){
+                if (respuesta.getText().compareTo(respuesta_correcta)!=0) {
+                    respuestas_falsas[i] = respuesta;
+                    i ++;
+                }    
+            }
+                
+            aleatorio = (int) Math.round((Math.random()*respuestas_falsas.length));
+            respuesta_seleccionada = respuestas_falsas[aleatorio];
+            respuesta_seleccionada.setText("");
+            next_aleatorio = aleatorio - 1;
+            if(next_aleatorio < 0) {
+                next_aleatorio = 2;
+            } 
+            respuesta_seleccionada = respuestas_falsas[next_aleatorio];
+            respuesta_seleccionada.setText("");
+
+
+            AudioClip sonido;
+            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/main.wav"));
+            sonido.play();
+        
+            using_help1=true;
+        }
+        System.out.println("1");
+    }//GEN-LAST:event_btnHelp_1ActionPerformed
+
+    private void btnHelp_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelp_3ActionPerformed
+        
+        if(!using_help3){
+            AudioClip sonido;
+            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/win.mp3"));
+            sonido.play();
+            System.out.println("3");
+        
+            using_help3=true;
+        }
+
+    }//GEN-LAST:event_btnHelp_3ActionPerformed
+
+    private void btnHelp_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelp_2ActionPerformed
+        
+        if(!using_help2){
+            AudioClip sonido;
+            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/win.mp3"));
+            sonido.play();
+            System.out.println("2");
+        
+            using_help2=true;
+        }
+
+    }//GEN-LAST:event_btnHelp_2ActionPerformed
+
     public void nuevo()
     {
         LblCont.setText(cont+"");
@@ -317,7 +434,8 @@ public class DPlay extends javax.swing.JDialog {
                             rt3=respuestas.get(1);
                             rt4=respuestas.get(0);
                             break;
-                    default:  
+                    default:          // TODO add your handling code here:
+
                         System.out.println("es default" + k);
                             rt1=respuestas.get(3);
                             rt2=respuestas.get(2);
@@ -341,6 +459,9 @@ public class DPlay extends javax.swing.JDialog {
     private javax.swing.JButton BttEnviar;
     private javax.swing.JLabel LblCont;
     private javax.swing.JLabel LblFaq;
+    private javax.swing.JToggleButton btnHelp_1;
+    private javax.swing.JToggleButton btnHelp_2;
+    private javax.swing.JToggleButton btnHelp_3;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblRt1;
     private javax.swing.JLabel lblRt2;

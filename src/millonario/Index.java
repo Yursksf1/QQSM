@@ -12,6 +12,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+// Audio
+import java.applet.AudioClip;
+
 public class Index extends javax.swing.JFrame {
 
        List<Pregunta> preguntas = new ArrayList<Pregunta>();
@@ -136,11 +139,16 @@ public class Index extends javax.swing.JFrame {
         }
         else
         {
+            
         play.setPreguntas(preguntas);
         play.nuevo();
         play.setLocationRelativeTo(null);
         play.setResizable(false);
         play.setVisible(true);
+        
+        AudioClip sonido;
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/main.wav"));
+        sonido.play();
         }
     }//GEN-LAST:event_Btt2ActionPerformed
 
