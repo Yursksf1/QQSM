@@ -312,6 +312,9 @@ public class DPlay extends javax.swing.JDialog {
        {
            if(rtc.cod == 1)
            {
+                AudioClip sonido;
+                sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/respuesta_correcta.wav"));
+                sonido.play();
                 JOptionPane.showMessageDialog( null, "Muy Bien", "QQSM", JOptionPane.PLAIN_MESSAGE );
                 cont++;
                 if (cont>11) {
@@ -326,6 +329,9 @@ public class DPlay extends javax.swing.JDialog {
            }
            else
            {
+                AudioClip sonido;
+                sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/respuesta_incorrecta.wav"));
+                sonido.play();
                contError++;
                switch(k)
                     {
@@ -387,7 +393,7 @@ public class DPlay extends javax.swing.JDialog {
 
 
             AudioClip sonido;
-            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/main.wav"));
+            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/respuesta_correcta.wav"));
             sonido.play();
         
             using_help1=true;
@@ -399,7 +405,7 @@ public class DPlay extends javax.swing.JDialog {
         
         if(!using_help3){
             AudioClip sonido;
-            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/win.mp3"));
+            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/llamada.wav"));
             sonido.play();
             System.out.println("3");
         
@@ -412,7 +418,7 @@ public class DPlay extends javax.swing.JDialog {
         
         if(!using_help2){
             AudioClip sonido;
-            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/win.mp3"));
+            sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/llamada.wav"));
             sonido.play();
             System.out.println("2");
         
@@ -479,6 +485,11 @@ public class DPlay extends javax.swing.JDialog {
         lblRt2.setText(rt2.getTex());
         lblRt3.setText(rt3.getTex());
         lblRt4.setText(rt4.getTex());
+                    
+        
+        AudioClip sonido;
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/pregunta.wav"));
+        sonido.play();
     }
     
     
