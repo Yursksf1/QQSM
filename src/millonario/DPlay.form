@@ -53,10 +53,10 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblRt1" pref="600" max="32767" attributes="0"/>
-                                  <Component id="lblRt3" max="32767" attributes="0"/>
+                                  <Component id="lblRt3" pref="600" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -69,10 +69,10 @@
                               <Component id="LblFaq" min="-2" pref="1217" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="135" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="585" max="-2" attributes="0"/>
@@ -101,22 +101,22 @@
               </Group>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               <Component id="LblFaq" min="-2" pref="53" max="-2" attributes="0"/>
-              <EmptySpace pref="354" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="354" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblRt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblRt1" alignment="3" max="32767" attributes="0"/>
                   <Component id="lblRt2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblRt4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblRt3" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BttEnviar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

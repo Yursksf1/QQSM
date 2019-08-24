@@ -16,17 +16,16 @@ import javax.swing.JPanel;
 import java.applet.AudioClip;
 
 public class Index extends javax.swing.JFrame {
-
-       List<Pregunta> preguntas = new ArrayList<Pregunta>();
+       List[] preguntas_dificultad = new List[3];
        private DAddFaq addFaq = new DAddFaq(new javax.swing.JFrame(), true);
        private DPlay play = new DPlay(new javax.swing.JFrame(), true);
-       
-   
+       AudioClip sonido;
+ 
     public Index() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Ejemplo");
+        setTitle("¿Quién Quiere Ser Millonario?");
         setIconImage(new ImageIcon(getClass().getResource("/IMG/Icono_52.png")).getImage());
         ((JPanel)getContentPane()).setOpaque(false);
         ImageIcon uno=new ImageIcon(this.getClass().getResource("/IMG/Fondo_650x375.jpg"));
@@ -35,6 +34,9 @@ public class Index extends javax.swing.JFrame {
         getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
         fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
         memoriaDefault();
+        
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/main.wav"));
+        sonido.play();
     }
 
     
@@ -116,9 +118,8 @@ public class Index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btt4ActionPerformed
-        preguntas=null;
-        preguntas = new ArrayList<Pregunta>();
-
+        preguntas_dificultad=null;
+        preguntas_dificultad = new List [3];
     }//GEN-LAST:event_Btt4ActionPerformed
 
     private void bttPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttPdfActionPerformed
@@ -126,79 +127,38 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_bttPdfActionPerformed
 
     private void Btt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btt3ActionPerformed
-        addFaq.setPreguntas(preguntas);
+        addFaq.setPreguntas(preguntas_dificultad[0]);
         addFaq.setLocationRelativeTo(null);
         addFaq.setResizable(false);
         addFaq.setVisible(true);
     }//GEN-LAST:event_Btt3ActionPerformed
 
     private void Btt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btt2ActionPerformed
-        if(preguntas.size()==0)
-        {
-            JOptionPane.showMessageDialog( null, "No Hay Preguntas Disponibles", "QQSM", JOptionPane.PLAIN_MESSAGE );
-        }
-        else
-        {
-            
-        play.setPreguntas(preguntas);
+
+        play.setPreguntasDificultad(preguntas_dificultad);
+        play.setPreguntas(preguntas_dificultad[0]);
         play.nuevo();
         play.setLocationRelativeTo(null);
         play.setResizable(false);
         play.setVisible(true);
         
-        AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/main.wav"));
-        sonido.play();
-        }
+        sonido.stop();
+        
     }//GEN-LAST:event_Btt2ActionPerformed
 
-    public void memoriaDefault()
-    {
-    Pregunta pr;
+    public void memoriaDefault() {        
+        loadPreguntasFaciles();
+        loadPreguntasMedias();
+        loadPreguntasDificiles();
+    }
+    
+    public void loadPreguntasRespuestas( String[][] lista_preguntas,  List<Pregunta> preguntas) {
+        Pregunta pr;
         List<Respuesta> respuestas;
-        
-        String[][] lista_preguntas = { 
-            {
-             "¿Cuál fue la décima plaga de Egipto?", 
-             "Muerte de los primogénitos", 
-             "Piojos", 
-             "Langostas",
-             "Inundación"
-            }, 
-            {
-             "En el libro del Genesis, ¿Quien es llamada madre de todos los vivientes?", 
-             "Eva", 
-             "Sara", 
-             "Maria",
-             "Juana"
-            },  
-            {
-             "¿Cuál de esos personajes abrió el mar rojo?", 
-             "Moisés", 
-             "Noé", 
-             "Josue",
-             "Maria"
-            },   
-            {
-             "¿Qué personaje bíblico se lavó las manos en público?", 
-             "Pilato", 
-             "Naamán", 
-             "Caifás",
-             "Maria Magdalena"
-            },   
-            {
-             "¿Cual fue la primera persona a la que Cristo habló después de su resurrección?", 
-             "María Magdalena", 
-             "Judas", 
-             "Dios",
-             "Pilatos"
-            }, 
-        };
-        
-        for(String[] pregunta:lista_preguntas)
-        {
+        for(String[] pregunta:lista_preguntas) {
              pr = new Pregunta();
              pr.setTexto(pregunta[0]);
+             pr.setDificultad( Integer.parseInt(pregunta[5]));
              respuestas = pr.getRespuestas();
 
              Respuesta Rt1 = new Respuesta();
@@ -223,26 +183,129 @@ public class Index extends javax.swing.JFrame {
 
              preguntas.add(pr);
         }
-                 
-    
     }
     
-       
-    public void ImpConsola()
-    {
-    for(Pregunta pregunta : preguntas)
-        {
-            System.out.println("Pregunta: " + pregunta.getTexto());
-            for(Respuesta respuesta : pregunta.getRespuestas())
-            {
-                System.out.println("Respuesta tex " + respuesta.getTex());
-                System.out.println("Respuesta cod " + respuesta.getCod());
+    public void loadPreguntasFaciles(){
+        List<Pregunta> preguntas_faciles = new ArrayList<Pregunta>();
 
+        String[][] lista_preguntas = { 
+            {
+             "F ¿Cuál fue la décima plaga de Egipto?", 
+             "Muerte de los primogénitos", 
+             "Piojos", 
+             "Langostas",
+             "Inundación",
+             "1",
+            }, 
+            {
+             "F En el libro del Genesis, ¿Quien es llamada madre de todos los vivientes?", 
+             "Eva", 
+             "Sara", 
+             "Maria",
+             "Juana",
+             "1"
+            },  
+            {
+             "F ¿Cuál de esos personajes abrió el mar rojo?", 
+             "Moisés", 
+             "Noé", 
+             "Josue",
+             "Maria",
+             "1"
             }
-            System.out.println("");
-        }
+        };
+        loadPreguntasRespuestas(lista_preguntas, preguntas_faciles);
+        preguntas_dificultad[0] = preguntas_faciles;
     }
-    
+        
+    public void loadPreguntasMedias(){
+       List<Pregunta> preguntas_medias = new ArrayList<Pregunta>();
+        String[][] lista_preguntas = { 
+            {
+             "M ¿Cuál fue la décima plaga de Egipto?", 
+             "Muerte de los primogénitos", 
+             "Piojos", 
+             "Langostas",
+             "Inundación",
+             "2",
+            }, 
+            {
+             "M En el libro del Genesis, ¿Quien es llamada madre de todos los vivientes?", 
+             "Eva", 
+             "Sara", 
+             "Maria",
+             "Juana",
+             "2"
+            },  
+            {
+             "M ¿Cuál de esos personajes abrió el mar rojo?", 
+             "Moisés", 
+             "Noé", 
+             "Josue",
+             "Maria",
+             "2"
+            },   
+            {
+             "M ¿Qué personaje bíblico se lavó las manos en público?", 
+             "Pilato", 
+             "Naamán", 
+             "Caifás",
+             "Maria Magdalena",
+             "2"    
+            },   
+            {
+             "M ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?", 
+             "María Magdalena", 
+             "Judas", 
+             "Dios",
+             "Pilatos",
+             "2"
+            },    
+            {
+             "M2 ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?", 
+             "María Magdalena", 
+             "Judas", 
+             "Dios",
+             "Pilatos",
+             "2"
+            }, 
+        };
+        loadPreguntasRespuestas(lista_preguntas, preguntas_medias);
+        preguntas_dificultad[1] = preguntas_medias;
+
+    }
+        
+    public void loadPreguntasDificiles(){
+       List<Pregunta> preguntas_dificiles = new ArrayList<Pregunta>();
+        String[][] lista_preguntas = { 
+            {
+             "D ¿Cuál de esos personajes abrió el mar rojo?", 
+             "Moisés", 
+             "Noé", 
+             "Josue",
+             "Maria",
+             "3"
+            },   
+            {
+             "D ¿Qué personaje bíblico se lavó las manos en público?", 
+             "Pilato", 
+             "Naamán", 
+             "Caifás",
+             "Maria Magdalena",
+             "3"    
+            },   
+            {
+             "D ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?", 
+             "María Magdalena", 
+             "Judas", 
+             "Dios",
+             "Pilatos",
+             "3"
+            },    
+        };
+        loadPreguntasRespuestas(lista_preguntas, preguntas_dificiles);
+        preguntas_dificultad[2] = preguntas_dificiles;
+    }
     
     public static void main(String args[]) {
        

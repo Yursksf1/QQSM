@@ -8,6 +8,7 @@ public class Pregunta
 {
     String texto;
     List<Respuesta> respuestas = new ArrayList<Respuesta>();
+    int dificultad;
     
     public String getTexto() {
         return texto;
@@ -17,6 +18,14 @@ public class Pregunta
         this.texto = texto;
     }
 
+    public int getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(int dificultad) {
+        this.dificultad = dificultad;
+    }
+    
     public List<Respuesta> getRespuestas() {
         return respuestas;
     }

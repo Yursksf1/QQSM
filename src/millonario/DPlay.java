@@ -29,6 +29,7 @@ public class DPlay extends javax.swing.JDialog {
         fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
         
     }
+    List [] preguntas_dificultad;
     List<Pregunta> preguntas;
     List<Respuesta> respuestas;
     Pregunta pr;
@@ -59,6 +60,17 @@ public class DPlay extends javax.swing.JDialog {
     public List<Pregunta> getPreguntas()
     {
         return preguntas;
+    }
+    
+        
+    public void setPreguntasDificultad(List [] preguntas_dificultad) 
+    {
+        this.preguntas_dificultad = preguntas_dificultad;
+    }
+
+    public List [] getPreguntasDificultad()
+    {
+        return preguntas_dificultad;
     }
 
     @SuppressWarnings("unchecked")
@@ -188,9 +200,9 @@ public class DPlay extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblRt1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-                                    .addComponent(lblRt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lblRt3, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
                                 .addGap(81, 81, 81)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblRt2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
@@ -198,7 +210,7 @@ public class DPlay extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
                                 .addComponent(LblFaq, javax.swing.GroupLayout.PREFERRED_SIZE, 1217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 135, Short.MAX_VALUE)))
+                        .addGap(135, 135, 135)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(585, 585, 585)
@@ -223,14 +235,14 @@ public class DPlay extends javax.swing.JDialog {
                     .addComponent(LblCont))
                 .addGap(68, 68, 68)
                 .addComponent(LblFaq, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
+                .addGap(354, 354, 354)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRt1)
+                    .addComponent(lblRt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblRt2))
                 .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRt4)
-                    .addComponent(lblRt3))
+                    .addComponent(lblRt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BttEnviar)
@@ -304,7 +316,15 @@ public class DPlay extends javax.swing.JDialog {
            {
                 JOptionPane.showMessageDialog( null, "Muy Bien", "QQSM", JOptionPane.PLAIN_MESSAGE );
                 cont++;
-                nuevo();
+                if (cont>11) {
+                    JOptionPane.showMessageDialog( null, "Felicidades Haz Ganado", "QQSM", JOptionPane.PLAIN_MESSAGE );
+                    cont = 0;
+                    preguntas = preguntas_dificultad[0];
+                    contError=0; 
+                } else {
+                    nuevo();
+                }
+                
            }
            else
            {
@@ -319,6 +339,7 @@ public class DPlay extends javax.swing.JDialog {
                if(contError>1){
                     JOptionPane.showMessageDialog( null, "Perdio", "QQSM", JOptionPane.PLAIN_MESSAGE );
                     cont=0; 
+                    preguntas = preguntas_dificultad[0];
                     contError=0;
                     this.dispose();;
                 } else {
@@ -404,8 +425,17 @@ public class DPlay extends javax.swing.JDialog {
 
     public void nuevo()
     {
+        if (cont == 3 ) {
+            preguntas = preguntas_dificultad[1];
+        } else if ( cont == 6) {
+            preguntas = preguntas_dificultad[2];
+        } else if (cont == 12 ) {
+        
+        }
+            
         LblCont.setText(cont+"");
         pr=preguntas.get((int) Math.round((Math.random()*(preguntas.size()-1))));
+        preguntas.remove(pr);
         respuestas = pr.getRespuestas();
         k=1+(int) Math.round((Math.random()*3));
         switch(k)
