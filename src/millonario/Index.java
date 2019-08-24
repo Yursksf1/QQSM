@@ -29,7 +29,7 @@ public class Index extends javax.swing.JFrame {
         setTitle("Ejemplo");
         setIconImage(new ImageIcon(getClass().getResource("/IMG/Icono_52.png")).getImage());
         ((JPanel)getContentPane()).setOpaque(false);
-        ImageIcon uno=new ImageIcon(this.getClass().getResource("/IMG/Fondo_650x375.jpg"));
+        ImageIcon uno=new ImageIcon(this.getClass().getResource("/IMG/Portada1.jpg"));
         JLabel fondo= new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
@@ -42,38 +42,16 @@ public class Index extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Btt4 = new javax.swing.JButton();
-        bttPdf = new javax.swing.JButton();
-        Btt3 = new javax.swing.JButton();
         Btt2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setPreferredSize(new java.awt.Dimension(1340, 800));
 
-        Btt4.setText("Borrar");
-        Btt4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btt4ActionPerformed(evt);
-            }
-        });
-
-        bttPdf.setText("Cargar Preguntas");
-        bttPdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttPdfActionPerformed(evt);
-            }
-        });
-
-        Btt3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/agregar_16.png"))); // NOI18N
-        Btt3.setText(" Agregar Preguntas");
-        Btt3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btt3ActionPerformed(evt);
-            }
-        });
-
+        Btt2.setFont(new java.awt.Font("Bebas", 0, 12)); // NOI18N
         Btt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/play_16.png"))); // NOI18N
         Btt2.setText("Jugar");
+        Btt2.setIconTextGap(10);
         Btt2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btt2ActionPerformed(evt);
@@ -85,52 +63,20 @@ public class Index extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Btt2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
-                        .addComponent(Btt3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bttPdf, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Btt4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                .addGap(339, 339, 339)
+                .addComponent(Btt2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addGap(339, 339, 339))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bttPdf)
-                .addGap(18, 18, 18)
-                .addComponent(Btt4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btt2)
-                    .addComponent(Btt3))
-                .addContainerGap())
+                .addContainerGap(431, Short.MAX_VALUE)
+                .addComponent(Btt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Btt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btt4ActionPerformed
-        preguntas=null;
-        preguntas = new ArrayList<Pregunta>();
-
-    }//GEN-LAST:event_Btt4ActionPerformed
-
-    private void bttPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttPdfActionPerformed
-        memoriaDefault();
-    }//GEN-LAST:event_bttPdfActionPerformed
-
-    private void Btt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btt3ActionPerformed
-        addFaq.setPreguntas(preguntas);
-        addFaq.setLocationRelativeTo(null);
-        addFaq.setResizable(false);
-        addFaq.setVisible(true);
-    }//GEN-LAST:event_Btt3ActionPerformed
 
     private void Btt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btt2ActionPerformed
         if(preguntas.size()==0)
@@ -255,8 +201,5 @@ public class Index extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btt2;
-    private javax.swing.JButton Btt3;
-    private javax.swing.JButton Btt4;
-    private javax.swing.JButton bttPdf;
     // End of variables declaration//GEN-END:variables
 }
