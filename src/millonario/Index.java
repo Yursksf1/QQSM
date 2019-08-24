@@ -48,7 +48,7 @@ public class Index extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setPreferredSize(new java.awt.Dimension(1340, 800));
+        setPreferredSize(new java.awt.Dimension(1440, 860));
 
         Btt2.setFont(new java.awt.Font("Bebas", 0, 12)); // NOI18N
         Btt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/play_16.png"))); // NOI18N
