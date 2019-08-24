@@ -45,8 +45,8 @@ public class DPlay extends javax.swing.JDialog {
     boolean using_help1=false;    
     boolean using_help2=false;
     boolean using_help3=false;
+    AudioClip sonido_pregunta;
 
-    
     
             // TODO add your handling code here:
 
@@ -343,17 +343,13 @@ public class DPlay extends javax.swing.JDialog {
                     case 3: lblRt3.setForeground(new java.awt.Color(0, 153, 0));  break;
                     case 4: lblRt4.setForeground(new java.awt.Color(0, 153, 0));  break;
                     }
-               if(contError>1){
+               
                     JOptionPane.showMessageDialog( null, "Perdio", "QQSM", JOptionPane.PLAIN_MESSAGE );
                     cont=0; 
                     preguntas = preguntas_dificultad[0];
                     contError=0;
                     this.dispose();;
-                } else {
-                    JOptionPane.showMessageDialog( null, "Tienes otra oporunidad", "QQSM", JOptionPane.PLAIN_MESSAGE );
-                     cont++;
-                     nuevo();
-               }
+
            }
            rtc=null;
            lblRt1.setForeground(new java.awt.Color(255,255,255));
@@ -418,8 +414,8 @@ public class DPlay extends javax.swing.JDialog {
     }//GEN-LAST:event_btnHelp_3ActionPerformed
 
     private void btnHelp_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelp_2ActionPerformed
-        
         if(!using_help2){
+            sonido_pregunta.stop();        
             AudioClip sonido;
             sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/llamada.wav"));
             sonido.play();
@@ -490,9 +486,8 @@ public class DPlay extends javax.swing.JDialog {
         lblRt4.setText(rt4.getTex());
                     
         
-        AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/pregunta.wav"));
-        sonido.play();
+        sonido_pregunta = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/pregunta.wav"));
+        sonido_pregunta.play();
     }
     
     
