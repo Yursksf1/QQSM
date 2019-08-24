@@ -95,12 +95,10 @@ public class DPlay extends javax.swing.JDialog {
         setForeground(java.awt.Color.yellow);
         setIconImage(null);
         setIconImages(null);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1440, 850));
 
         LblFaq.setBackground(new java.awt.Color(51, 0, 102));
         LblFaq.setFont(new java.awt.Font("Lato Heavy", 0, 18)); // NOI18N
-        LblFaq.setForeground(new java.awt.Color(0, 0, 0));
         LblFaq.setText("Pregunta");
         LblFaq.setToolTipText("");
         LblFaq.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.white));

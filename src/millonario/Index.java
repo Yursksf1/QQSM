@@ -20,7 +20,7 @@ public class Index extends javax.swing.JFrame {
        private DAddFaq addFaq = new DAddFaq(new javax.swing.JFrame(), true);
        private DPlay play = new DPlay(new javax.swing.JFrame(), true);
        AudioClip sonido;
- 
+
     public Index() {
         initComponents();
         setLocationRelativeTo(null);
@@ -28,54 +28,32 @@ public class Index extends javax.swing.JFrame {
         setTitle("¿Quién Quiere Ser Millonario?");
         setIconImage(new ImageIcon(getClass().getResource("/IMG/Icono_52.png")).getImage());
         ((JPanel)getContentPane()).setOpaque(false);
-        ImageIcon uno=new ImageIcon(this.getClass().getResource("/IMG/Fondo_650x375.jpg"));
+        ImageIcon uno=new ImageIcon(this.getClass().getResource("/IMG/Portada1.jpg"));
         JLabel fondo= new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
         fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
         memoriaDefault();
-        
+
         sonido = java.applet.Applet.newAudioClip(getClass().getResource("/SOUNDS/main.wav"));
         sonido.play();
     }
 
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Btt4 = new javax.swing.JButton();
-        bttPdf = new javax.swing.JButton();
-        Btt3 = new javax.swing.JButton();
         Btt2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+        setPreferredSize(new java.awt.Dimension(1340, 800));
 
-        Btt4.setText("Borrar");
-        Btt4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btt4ActionPerformed(evt);
-            }
-        });
-
-        bttPdf.setText("Cargar Preguntas");
-        bttPdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttPdfActionPerformed(evt);
-            }
-        });
-
-        Btt3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/agregar_16.png"))); // NOI18N
-        Btt3.setText(" Agregar Preguntas");
-        Btt3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btt3ActionPerformed(evt);
-            }
-        });
-
+        Btt2.setFont(new java.awt.Font("Bebas", 0, 12)); // NOI18N
         Btt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/play_16.png"))); // NOI18N
         Btt2.setText("Jugar");
+        Btt2.setIconTextGap(10);
         Btt2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btt2ActionPerformed(evt);
@@ -87,31 +65,16 @@ public class Index extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Btt2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
-                        .addComponent(Btt3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bttPdf, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Btt4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                .addGap(339, 339, 339)
+                .addComponent(Btt2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addGap(339, 339, 339))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bttPdf)
-                .addGap(18, 18, 18)
-                .addComponent(Btt4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Btt2)
-                    .addComponent(Btt3))
-                .addContainerGap())
+                .addContainerGap(431, Short.MAX_VALUE)
+                .addComponent(Btt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         pack();
@@ -141,17 +104,17 @@ public class Index extends javax.swing.JFrame {
         play.setLocationRelativeTo(null);
         play.setResizable(false);
         play.setVisible(true);
-        
+
         sonido.stop();
-        
+
     }//GEN-LAST:event_Btt2ActionPerformed
 
-    public void memoriaDefault() {        
+    public void memoriaDefault() {
         loadPreguntasFaciles();
         loadPreguntasMedias();
         loadPreguntasDificiles();
     }
-    
+
     public void loadPreguntasRespuestas( String[][] lista_preguntas,  List<Pregunta> preguntas) {
         Pregunta pr;
         List<Respuesta> respuestas;
@@ -184,31 +147,31 @@ public class Index extends javax.swing.JFrame {
              preguntas.add(pr);
         }
     }
-    
+
     public void loadPreguntasFaciles(){
         List<Pregunta> preguntas_faciles = new ArrayList<Pregunta>();
 
-        String[][] lista_preguntas = { 
+        String[][] lista_preguntas = {
             {
-             "F ¿Cuál fue la décima plaga de Egipto?", 
-             "Muerte de los primogénitos", 
-             "Piojos", 
+             "F ¿Cuál fue la décima plaga de Egipto?",
+             "Muerte de los primogénitos",
+             "Piojos",
              "Langostas",
              "Inundación",
              "1",
-            }, 
+            },
             {
-             "F En el libro del Genesis, ¿Quien es llamada madre de todos los vivientes?", 
-             "Eva", 
-             "Sara", 
+             "F En el libro del Genesis, ¿Quien es llamada madre de todos los vivientes?",
+             "Eva",
+             "Sara",
              "Maria",
              "Juana",
              "1"
-            },  
+            },
             {
-             "F ¿Cuál de esos personajes abrió el mar rojo?", 
-             "Moisés", 
-             "Noé", 
+             "F ¿Cuál de esos personajes abrió el mar rojo?",
+             "Moisés",
+             "Noé",
              "Josue",
              "Maria",
              "1"
@@ -217,109 +180,106 @@ public class Index extends javax.swing.JFrame {
         loadPreguntasRespuestas(lista_preguntas, preguntas_faciles);
         preguntas_dificultad[0] = preguntas_faciles;
     }
-        
+
     public void loadPreguntasMedias(){
        List<Pregunta> preguntas_medias = new ArrayList<Pregunta>();
-        String[][] lista_preguntas = { 
+        String[][] lista_preguntas = {
             {
-             "M ¿Cuál fue la décima plaga de Egipto?", 
-             "Muerte de los primogénitos", 
-             "Piojos", 
+             "M ¿Cuál fue la décima plaga de Egipto?",
+             "Muerte de los primogénitos",
+             "Piojos",
              "Langostas",
              "Inundación",
              "2",
-            }, 
+            },
             {
-             "M En el libro del Genesis, ¿Quien es llamada madre de todos los vivientes?", 
-             "Eva", 
-             "Sara", 
+             "M En el libro del Genesis, ¿Quien es llamada madre de todos los vivientes?",
+             "Eva",
+             "Sara",
              "Maria",
              "Juana",
              "2"
-            },  
+            },
             {
-             "M ¿Cuál de esos personajes abrió el mar rojo?", 
-             "Moisés", 
-             "Noé", 
+             "M ¿Cuál de esos personajes abrió el mar rojo?",
+             "Moisés",
+             "Noé",
              "Josue",
              "Maria",
              "2"
-            },   
+            },
             {
-             "M ¿Qué personaje bíblico se lavó las manos en público?", 
-             "Pilato", 
-             "Naamán", 
+             "M ¿Qué personaje bíblico se lavó las manos en público?",
+             "Pilato",
+             "Naamán",
              "Caifás",
              "Maria Magdalena",
-             "2"    
-            },   
+             "2"
+            },
             {
-             "M ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?", 
-             "María Magdalena", 
-             "Judas", 
+             "M ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?",
+             "María Magdalena",
+             "Judas",
              "Dios",
              "Pilatos",
              "2"
-            },    
+            },
             {
-             "M2 ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?", 
-             "María Magdalena", 
-             "Judas", 
+             "M2 ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?",
+             "María Magdalena",
+             "Judas",
              "Dios",
              "Pilatos",
              "2"
-            }, 
+            },
         };
         loadPreguntasRespuestas(lista_preguntas, preguntas_medias);
         preguntas_dificultad[1] = preguntas_medias;
 
     }
-        
+
     public void loadPreguntasDificiles(){
        List<Pregunta> preguntas_dificiles = new ArrayList<Pregunta>();
-        String[][] lista_preguntas = { 
+        String[][] lista_preguntas = {
             {
-             "D ¿Cuál de esos personajes abrió el mar rojo?", 
-             "Moisés", 
-             "Noé", 
+             "D ¿Cuál de esos personajes abrió el mar rojo?",
+             "Moisés",
+             "Noé",
              "Josue",
              "Maria",
              "3"
-            },   
+            },
             {
-             "D ¿Qué personaje bíblico se lavó las manos en público?", 
-             "Pilato", 
-             "Naamán", 
+             "D ¿Qué personaje bíblico se lavó las manos en público?",
+             "Pilato",
+             "Naamán",
              "Caifás",
              "Maria Magdalena",
-             "3"    
-            },   
+             "3"
+            },
             {
-             "D ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?", 
-             "María Magdalena", 
-             "Judas", 
+             "D ¿Cual fue la primera persona a la que Cristo habló después de su resurrección?",
+             "María Magdalena",
+             "Judas",
              "Dios",
              "Pilatos",
              "3"
-            },    
+            },
         };
         loadPreguntasRespuestas(lista_preguntas, preguntas_dificiles);
         preguntas_dificultad[2] = preguntas_dificiles;
     }
-    
+
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Index().setVisible(true);
-                
+
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btt2;
-    private javax.swing.JButton Btt3;
-    private javax.swing.JButton Btt4;
-    private javax.swing.JButton bttPdf;
     // End of variables declaration//GEN-END:variables
 }
